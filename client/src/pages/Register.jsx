@@ -3,7 +3,7 @@ import { axios_cu_cred } from "../utils/api";
 
 import { Navigate } from "react-router-dom";
 
-function Register({logged}) {
+function Register({ logged }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,10 +18,10 @@ function Register({logged}) {
     }
     await axios_cu_cred
       .post("/api/auth/signup", {
-        username:username,
-        email:email,
-        password:password,
-        role:[role]
+        username: username,
+        email: email,
+        password: password,
+        role: [role],
       })
       .then((res) => {
         if (res.data.message == "User registered successfully!") {
@@ -457,9 +457,11 @@ function Register({logged}) {
                 setPassword(e.target.value);
               }}
             />
-            <select onChange={(e) => {
-              setRole(e.target.value)
-            }}>
+            <select
+              onChange={(e) => {
+                setRole(e.target.value);
+              }}
+            >
               <option value="">Alege un rol</option>
               <option value="elev">Elev</option>
               <option value="mod">Facultate</option>
@@ -469,6 +471,11 @@ function Register({logged}) {
               className="mainButton"
               style={{ width: "min-content" }}
             >
+              {" "}
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
               Register
             </div>
           </div>

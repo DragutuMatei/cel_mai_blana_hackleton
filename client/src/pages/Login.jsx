@@ -432,7 +432,10 @@ function Login({setLogged, setUser, user, logged}) {
               setPassword(e.target.value);
           }} />
           <div onClick={login} className="mainButton" style={{ width: "min-content" }}>
-            Login
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span> Login
             </div>
     
         </div>

@@ -13,6 +13,8 @@ function Home() {
       <div className="bara"></div>
       {/* <Scroll /> */}
       <About />
+      <div className="just_a_try">
+        
       <div className="container">
         <div className="citat">
           <img src={require("../assets/img/banci_faculta.jpg")} alt="" />
@@ -30,6 +32,7 @@ function Home() {
         </div>
       </div>
       <Counts />
+      </div>
     </>
   );
 }
