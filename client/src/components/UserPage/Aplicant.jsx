@@ -45,7 +45,7 @@ function Aplicant({ user, i }) {
           {user.dosar.file2 && <img src={user.dosar.file2} alt="" />}
           {user.dosar.file3 && <img src={user.dosar.file3} alt="" />}
         </>
-      )}
+      )} 
 
       <p>{user.rezumat && user.rezumat}</p>
 
