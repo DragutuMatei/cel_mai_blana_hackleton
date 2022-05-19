@@ -10,14 +10,13 @@ let array = [];
 
 function FacultaPage() {
   const [kkk, setKKK] = useState(true);
-const [aplicanti, setAplicanti] = useState([]);
-
+  const [aplicanti, setAplicanti] = useState([]);
 
   const getAplicanti = async () => {
-    await axios_cu_cred.get("/api/test/getUserAplAsUni").then(res => {
+    await axios_cu_cred.get("/api/test/getUserAplAsUni").then((res) => {
       setAplicanti(res.data);
-    })
-  }
+    });
+  };
 
   useEffect(() => {
     const a = async () => {
@@ -48,10 +47,8 @@ const [aplicanti, setAplicanti] = useState([]);
     examen: "",
     taxa: "",
     medie: "",
-    link:""
+    link: "",
   });
-
-
 
   // const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -88,12 +85,12 @@ const [aplicanti, setAplicanti] = useState([]);
         oras,
         profil,
         link,
-        specialiati: specializari,
+        specialiati: specializari == [] ? null : specializari,
       })
       .then((res) => {
         setUser(res.data);
         if (res.data) {
-          alert("User Actualizat! ")
+          alert("User Actualizat! ");
         }
       });
   };
@@ -114,8 +111,7 @@ const [aplicanti, setAplicanti] = useState([]);
     await axios_cu_cred.get("/api/test/userInfo").then((res) => {
       setUser(res.data);
 
-      console.log(res.data.examen)
-
+      console.log(res.data.examen);
     });
   };
 
@@ -742,11 +738,7 @@ const [aplicanti, setAplicanti] = useState([]);
         </div>
 
         <div className="doi primu">
-          {
-            aplicanti && aplicanti.map(apl => (
-              <Aplicant user={apl} />
-            ))
-          }
+          {aplicanti && aplicanti.map((apl, index) => <Aplicant i={index} user={apl} />)}
         </div>
       </div>
     </div>

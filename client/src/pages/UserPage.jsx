@@ -9,24 +9,22 @@ let apli = [];
 function UserPage() {
   const [kkk, setKKK] = useState(true);
 
+  const [ceva, setCeva] = useState([]);
+
   const getAllAplications = async () => {
     await axios_cu_cred.get("/api/test/getAllAplications").then((res) => {
-      console.log(res.data);
-      res.data.forEach(async (apl) => {
-        console.log(apl);
-        apli.push({
-          ...res.data,
-          faculta: await getById(apl.id_facultate),
-        });
-        console.log(apli);
-      });
-    });
-  };
-
-  const getById = async (id) => {
-    await axios_cu_cred.post("/api/test/getById", { id: id }).then((res) => {
-      console.log(res.data);
-      return res.data;
+      setCeva(res.data);
+        console.log(res.data);
+    //   res.data.forEach(async (apl) => {
+    //     console.log(apl);
+    //     getById(apl.id_facultate);
+    //     apli.push([
+    //       ...res.data,
+    //       apl.rezultat,
+    //       ceva,
+    //     ]);
+    //     console.log(apli);
+    //   });
     });
   };
 
@@ -391,26 +389,13 @@ function UserPage() {
         </div>
 
         <div className="doi primu">
-          <Aplicatie
-            faculta={"Facultatea Politehnica bucuresti"}
-            rezultat={"Respins"}
-            id={1}
-          />
-          <Aplicatie
-            faculta={"Facultatea Politehnica bucuresti"}
-            rezultat={"Respins"}
-            id={1}
-          />
-          <Aplicatie
-            faculta={"Facultatea Politehnica bucuresti"}
-            rezultat={"Respins"}
-            id={1}
-          />
-          <Aplicatie
-            faculta={"Facultatea Politehnica bucuresti"}
-            rezultat={"Respins"}
-            id={1}
-          />
+          {ceva.map((cev) => {
+            return(
+            <Aplicatie
+              all={cev}
+              
+            />
+          )})}
         </div>
       </div>
     </div>
