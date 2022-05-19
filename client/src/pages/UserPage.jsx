@@ -1,14 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { axios_cu_cred } from "../utils/api";
 import Compressor from "compressorjs";
+import { Navigate } from "react-router";
+import Aplicatie from "../components/UserPage/Aplicatie";
 
 function UserPage() {
+  const [kkk, setKKK] = useState(true);
+
+  useEffect(() => {
+    const a = async () => {
+      await axios_cu_cred.get("/api/test/isLogged").then((res) => {
+        if (res.data) {
+          setKKK(true);
+        } else {
+          setKKK(false);
+        }
+      });
+    };
+
+    a();
+  }, []);
+
   const [user, setUser] = useState({
     id: "",
     username: "",
     email: "",
     authorities: [],
+    profil: "",
+    bac: "",
+    scrisoare: "",
+    rezumat: "",
+    oras: "",
+    locuri: "",
+    examen: "",
+    taxa: "",
+    link: "",
+    medie: "",
   });
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [dosar, setDosar] = useState([]);
@@ -28,12 +57,26 @@ function UserPage() {
     };
   };
 
-  const update = async () => {};
+  const update = async () => {
+    await axios_cu_cred
+      .post("/updateUser", {
+        email,
+        dosar,
+        bac,
+        scrisoare,
+        profil,
+        rezumat,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  };
 
   const iafrt = async () => {
     await axios_cu_cred.get("/api/test/userInfo").then((res) => {
       setUser(res.data);
-      console.log(res.data.authorities[0].authority);
+      // console.log(res.data.roles[0].name);
+      // console.log(res.data.authorities[0].authority);
     });
   };
 
@@ -43,6 +86,7 @@ function UserPage() {
 
   return (
     <div className="userpage">
+      {!kkk && <Navigate to="/login" />}
       <div className="top">
         <div className="poza">
           {user.profil ? (
@@ -217,21 +261,25 @@ function UserPage() {
       </div>
       <div className="doua">
         <div className="primu">
-          <div className="field">
+          <h1>Scrie doar ce vrei sa uploadezi la profilul tau</h1>
+
+          {/* <div className="field">
             <h3>Username: </h3>
             <input
               type="text"
-              value={user.username}
+              defaultValue={user.username}
+
               onChange={(e) => {
                 setUsername(e.target.value);
               }}
             />
-          </div>
+          </div> */}
+
           <div className="field">
             <h3>Email: </h3>
             <input
               type="text"
-              value={user.email}
+              defaultValue={user.email}
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
@@ -241,6 +289,7 @@ function UserPage() {
             <h3>Scurt rezumat despre tine: </h3>
             <textarea
               cols="30"
+              defaultValue={user.rezumat}
               rows="10"
               onChange={(e) => {
                 setRezumat(e.target.value);
@@ -275,7 +324,8 @@ function UserPage() {
             <h3>Media de la BAC:</h3>
             <input
               type="number"
-              value={user.bac}
+              step="0.01"
+              defaultValue={user.bac}
               onChange={(e) => {
                 setBac(e.target.value);
               }}
@@ -313,18 +363,26 @@ function UserPage() {
         </div>
 
         <div className="doi primu">
-          <div className="aplicatie">
-            <h2>Facultatea Politehnica bucuresti</h2>
-            <h3>
-              Rezultat: <span> Respins </span>
-            </h3>
-            <button className="mainButton">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              Sterge aplicatia</button>
-          </div>
+          <Aplicatie
+            faculta={"Facultatea Politehnica bucuresti"}
+            rezultat={"Respins"}
+            id={1}
+          />
+          <Aplicatie
+            faculta={"Facultatea Politehnica bucuresti"}
+            rezultat={"Respins"}
+            id={1}
+          />
+          <Aplicatie
+            faculta={"Facultatea Politehnica bucuresti"}
+            rezultat={"Respins"}
+            id={1}
+          />
+          <Aplicatie
+            faculta={"Facultatea Politehnica bucuresti"}
+            rezultat={"Respins"}
+            id={1}
+          />
         </div>
       </div>
     </div>

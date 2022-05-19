@@ -12,6 +12,7 @@ import Up from "./components/Up";
 import Contact from "./pages/Contact";
 import { useEffect, useState } from "react";
 import { axios_cu_cred } from "./utils/api";
+import FacultaPage from "./pages/FacultaPage";
 
 function App() {
   const [logged, setLogged] = useState(false);
@@ -68,7 +69,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/facultati" element={<Facultati />} />
-          <Route path="/userPage" element={<UserPage />} />
+          <Route path="/userPage" 
+          logged={logged}
+          element={<UserPage />} />
+          <Route path="/facultatePage"
+          logged={logged}
+          element={<FacultaPage />} />
           <Route
             path="/login"
             element={

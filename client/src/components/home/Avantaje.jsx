@@ -21,8 +21,8 @@ function Avantaje() {
             <path d="M83.1252 175L91.6668 116.25H61.2502C59.7224 116.25 58.6113 115.556 57.9168 114.167C57.2224 112.778 57.2224 111.458 57.9168 110.208L108.959 25H117.5L108.959 83.5417H138.958C140.486 83.5417 141.632 84.2361 142.396 85.625C143.16 87.0139 143.195 88.3333 142.5 89.5833L91.6668 175H83.1252Z" />
           </svg>
         }
-        text="pula mea coaie nushpula mea coaie nushpula mea coaie nush"
-        title="pula mea coaie nush"
+        // text="pula mea coaie nushpula mea coaie nushpula mea coaie nush"
+        title="RAPID  SI EFICIENT"
       />
       <Avantaj
         icon={
@@ -36,8 +36,8 @@ function Avantaje() {
             <path d="M99.7918 175L39.3752 141.875V91.875L8.3335 75L99.7918 25L191.667 75V141.042H179.167V82.2917L160.208 91.875V141.875L99.7918 175ZM99.7918 110.833L165.417 75L99.7918 39.7917L34.5835 75L99.7918 110.833ZM99.7918 160.833L147.708 134.375V99.375L99.7918 125L51.8752 98.9583V134.375L99.7918 160.833Z" />
           </svg>
         }
-        text="pula mea coaie nushpula mea coaie nushpula mea coaie nush"
-        title="pula mea coaie nush"
+        // text="pula mea coaie nushpula mea coaie nushpula mea coaie nush"
+        title="DEDICAT ABSOLVENTILOR DE LICEU"
       />
       <Avantaj
         icon={
@@ -51,8 +51,8 @@ function Avantaje() {
             <path d="M169.375 187.292L148.75 166.667H29.1665C25.8332 166.667 22.9165 165.417 20.4165 162.917C17.9165 160.417 16.6665 157.5 16.6665 154.167V45.8333C16.6665 44.3056 16.9443 42.8472 17.4998 41.4583C18.0554 40.0694 18.8193 38.8194 19.7915 37.7083L5.4165 23.3333L14.3748 14.375L178.333 178.333L169.375 187.292ZM29.1665 154.167H136.25L77.4998 95.4167H29.1665V154.167ZM29.1665 68.5417H50.6248L30.6248 48.5417L29.1665 47.0833V68.5417ZM180.208 162.292L170.833 152.917V95.4167H113.333L86.4582 68.5417H170.833V45.8333H63.7498L51.2498 33.3333H170.833C174.167 33.3333 177.083 34.5833 179.583 37.0833C182.083 39.5833 183.333 42.5 183.333 45.8333V154.167C183.333 155.694 183.055 157.153 182.5 158.542C181.944 159.931 181.18 161.181 180.208 162.292Z" />
           </svg>
         }
-        text="pula mea coaie nushpula mea coaie nushpula mea coaie nush"
-        title="pula mea coaie nush"
+        // text="pula mea coaie nushpula mea coaie nushpula mea coaie nush"
+        title="INFORMATII IN TIMP REAL GRATIS"
       />
       <Avantaj
         icon={
@@ -68,8 +68,8 @@ function Avantaje() {
             />
           </svg>
         }
-        text="pula mea coaie nushpula mea coaie nushpula mea coaie nush"
-        title="pula mea coaie nush"
+        // text="pula mea coai/e nushpula mea coaie nushpula mea coaie nush"
+        title="ACCES NELIMITAT DIN CONFORTUL PROPRIEI CASEI"
       />
     </div>
   );

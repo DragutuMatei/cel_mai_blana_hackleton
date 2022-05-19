@@ -1,8 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { axios_cu_cred } from "../utils/api";
 
-function Navbar({logged, setLogged, setUser, user}) {
+function Navbar({ logged, setLogged, setUser, user }) {
+  const [role, setRole] = useState("");
+
+  const iafrt = async () => {
+    if (logged)
+      await axios_cu_cred.get("/api/test/userInfo").then((res) => {
+        setRole(res.data.roles[0].name);
+      });
+  };
+
   useEffect(() => {
     const a = async () => {
       await axios_cu_cred.get("/api/test/isLogged").then((res) => {
@@ -14,18 +23,19 @@ function Navbar({logged, setLogged, setUser, user}) {
       });
     };
 
+    iafrt();
     a();
-  
   }, [logged]);
-  
+
   const logout = async () => {
     await axios_cu_cred.post("/api/auth/signout").then((res) => {
-      console.log(res);
-      setLogged(false);
-      setUser();
+      if (res.data) {
+        setLogged(false);
+        setUser();
+      }
     });
   };
-  
+
   return (
     <header className="header">
       <div className="logo">
@@ -39,16 +49,18 @@ function Navbar({logged, setLogged, setUser, user}) {
       </label>
       <ul className="nav-links">
         <li className="nav-link">
-          <Link to={{pathname:"/", hash:"#about"}} >About</Link>
+          <Link to={{ pathname: "/", hash: "#about" }}>About</Link>
         </li>
 
         <li className="nav-link">
-          <a href="/articles">Facultati</a>
+          <a href="/facultati">Facultati</a>
         </li>
         {logged ? (
           <>
             <li className="nav-link">
-              <Link to="userPage">
+              <Link
+                to={role == "ROLE_MODERATOR" ? "/facultatePage" : "/userPage"}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   enable-background="new 0 0 24 24"
@@ -76,11 +88,12 @@ function Navbar({logged, setLogged, setUser, user}) {
                       />
                     </g>
                   </g>
-                </svg> {" "}{user.username}
+                </svg>{" "}
+                {user.username}
               </Link>
             </li>
             <li className="nav-link" onClick={logout}>
-              <a href="#">Logout</a>
+              <h3>Logout</h3>
             </li>
           </>
         ) : (

@@ -8,10 +8,12 @@
   justify-content: space-around;
   align-items: center;
   background: $white;
-padding-bottom: 50px;
+  padding-bottom: 50px;
+
   .rig {
     flex: 1;
     padding: 20px;
+    padding-right: 50px;
     h1 {
       font-family: $koulen;
       font-size: 50px;
@@ -21,10 +23,9 @@ padding-bottom: 50px;
       text-align: left;
       padding: 10px;
     }
-    p{
-        font-size: 20px;
-        font-family: $roboto;
-
+    p {
+      font-size: 20px;
+      font-family: $roboto;
     }
   }
 
@@ -59,5 +60,11 @@ padding-bottom: 50px;
         margin: 15px;
       }
     }
+  }
+}
+
+@media screen and(max-width: 730px) {
+  .footer {
+    flex-direction: column;
   }
 }

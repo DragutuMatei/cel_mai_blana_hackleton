@@ -33,7 +33,9 @@ header {
         }
       }
 
-      a {
+      a,
+      h3 {
+        cursor: pointer;
         margin: 0.2rem;
         font-size: 18px;
         font-family: $roboto;
@@ -43,7 +45,7 @@ header {
         justify-content: center;
         align-items: center;
 
-        svg{
+        svg {
           margin-right: 10px;
         }
 

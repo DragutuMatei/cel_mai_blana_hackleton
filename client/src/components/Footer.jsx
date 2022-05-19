@@ -43,12 +43,12 @@ function Footer() {
         </div>
       </div>
       <div className="rig">
-        <h1>Sa ma bata mama daca stiu ce sa scriu aicea</h1>
+        <h1>FII TU VIITORUL , SALVEAZA-TI TIMPUL</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-          tenetur nemo ab magnam iure sit ipsa dolor, incidunt fugiat? Similique
-          rem ducimus, recusandae amet provident rerum aspernatur sunt. Placeat,
-          blanditiis!
+          Prin crearea acestui site dorim ca elevi sa interactioneze cat mai
+          mult cu facultatile de informatica din Romania fara prea mult efort.
+          Noi credem ca timpul este foarte valoros si trebuie folosit cat mai
+          inteligent . Uram succes tuturor ultilizatorilor!
         </p>
       </div>
     </div>
