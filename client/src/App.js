@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import { useEffect, useState } from "react";
 import { axios_cu_cred } from "./utils/api";
 import FacultaPage from "./pages/FacultaPage";
+import FacultateById from "./pages/FacultateById";
 
 function App() {
   const [logged, setLogged] = useState(false);
@@ -39,7 +40,7 @@ function App() {
   const iafrt = async () => {
         await axios_cu_cred.get("/api/test/userInfo").then((res) => {
           setUser(res.data);
-          console.log("raeofilafkjadbfaksdbjk")
+          // console.log("raeofilafkjadbfaksdbjk")
     });
 
   }
@@ -47,7 +48,7 @@ function App() {
   useEffect(() => {
     // elogged()
     iafrt();
-    console.log(user)
+    // console.log(user)
   }, []);
 
   return (
@@ -82,7 +83,6 @@ function App() {
                 logged={logged}
                 user={user}
                 setUser={(use) => {
-                  console.log(use);
                   setUser({
                     id: use.id,
                     username: use.username,
@@ -97,6 +97,7 @@ function App() {
 
           <Route path="/register" element={<Register logged={logged} />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/facultatea/:id" element={<FacultateById />} />
         </Routes>
 
         <Up />

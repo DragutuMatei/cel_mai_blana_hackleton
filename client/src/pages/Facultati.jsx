@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { axios_cu_cred } from "../utils/api";
 import Select from "react-select";
-import Modal from "../components/facultati/Modal";
+import { Link } from "react-router-dom";
 
 let array = [];
 function Facultati() {
+  const [oras, setOras] = useState("");
+  const [taxa, setTaxa] = useState("");
+  const [medie, setMedie] = useState("");
+
   const [arati, setArati] = useState(false);
   const [spec, setSpec] = useState([]);
   const [user, setUser] = useState({
@@ -12,9 +16,31 @@ function Facultati() {
     username: "",
     email: "",
     authorities: [],
+    profil: "",
+    bac: "",
+    scrisoare: "",
+    rezumat: "",
+    oras: "",
+    locuri: "",
+    examen: "",
+    taxa: "",
+    medie: "",
+    link: "",
   });
 
   const [facultati, setFacultati] = useState([]);
+
+  const filter = async () => {
+    await axios_cu_cred
+      .post("/api/test/filter", {
+        oras,
+        taxa,
+        medie,
+      })
+      .then((res) => {
+        setFacultati(res.data);
+      });
+  };
 
   const getUni = async () => {
     await axios_cu_cred.get("/api/test/totimod").then((res) => {
@@ -25,6 +51,7 @@ function Facultati() {
 
   useEffect(() => {
     getUni();
+    getSpecialitati();
   }, []);
 
   const iafrt = async () => {
@@ -52,7 +79,13 @@ function Facultati() {
       <div className="filtre">
         <div className="filtru">
           <h3>Alege orasul unde vei vrea sa stai</h3>
-          <input type="text" placeholder="oras" />
+          <input
+            type="text"
+            placeholder="oras"
+            onChange={(e) => {
+              setOras(e.target.value);
+            }}
+          />
         </div>
         <div className="filtru">
           <h3>Vrei cu admitere?</h3>
@@ -60,11 +93,23 @@ function Facultati() {
         </div>
         <div className="filtru">
           <h3>Care este taxa maxima pe care o poti suporta?</h3>
-          <input type="number" step="0.01" />
+          <input
+            type="number"
+            step="0.01"
+            onChange={(e) => {
+              setTaxa(e.target.value);
+            }}
+          />
         </div>
         <div className="filtru">
           <h3>Ce media ai avut la BAC?</h3>
-          <input type="number" step="0.01" />
+          <input
+            type="number"
+            step="0.01"
+            onChange={(e) => {
+              setMedie(e.target.value);
+            }}
+          />
         </div>
         <div className="filtru">
           <h3>Ce specializari cauti?</h3>
@@ -79,6 +124,10 @@ function Facultati() {
               option: (provided, state) => ({
                 ...provided,
                 padding: 20,
+                color: "black",
+                fontFamily: "Roboto",
+                fontSize: 20,
+                fontWeight: 400,
               }),
               control: () => ({
                 display: "flex",
@@ -91,6 +140,7 @@ function Facultati() {
                 backdropFilter: " blur(5px)",
                 border: "1px solid rgba(255, 255, 255, 0.3)",
                 outline: "none",
+                color: "black",
                 fontFamily: "Roboto",
                 fontSize: 20,
                 fontWeight: 400,
@@ -101,6 +151,7 @@ function Facultati() {
         <div
           className="mainButton"
           style={{ textAlign: "center", margin: 10, fontSize: 16 }}
+          onClick={filter}
         >
           <span></span>
           <span></span>
@@ -123,28 +174,18 @@ function Facultati() {
                   alt=""
                 />
                 <h3>{fac.username}</h3>
-                <div
+                <Link
                   className="mainButton"
                   style={{ textAlign: "center", margin: 10, fontSize: 16 }}
-                  onClick={() => {
-                    setArati((old) => !old);
-                  }}
+                  to={`/facultatea/${fac.id}`}
                 >
                   <span></span>
                   <span></span>
                   <span></span>
                   <span></span>
                   Citeste mai mult
-                </div>
+                </Link>
               </div>
-              {arati && (
-                <Modal
-                  id={fac.id}
-                  close={() => {
-                    setArati((old) => !old);
-                  }}
-                />
-              )}
             </>
           ))}
       </div>
